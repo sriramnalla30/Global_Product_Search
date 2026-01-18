@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --card-bg: #f9fafb;
+  --card-border: #e5e7eb;
+  --muted: #6b7280;
+  --accent: #3b82f6;
+}
+
+/* Force dark theme as default */
+.dark,
+:root {
+  --background: #0a0a0f;
+  --foreground: #f5f5f5;
+  --card-bg: #111117;
+  --card-border: #1f1f2e;
+  --muted: #9ca3af;
+  --accent: #3b82f6;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Override media query - always dark */
+@media (prefers-color-scheme: light) {
+  :root:not(.light) {
+    --background: #0a0a0f;
+    --foreground: #f5f5f5;
+    --card-bg: #111117;
+    --card-border: #1f1f2e;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Enhanced dark theme scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111117;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333344;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4a4a5e;
+}
+
+/* Card hover effects */
+.dark .card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #3b82f6, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow effect for best price */
+.glow-green {
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+}
+
+/* Mobile-friendly touch targets */
+@media (max-width: 768px) {
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
